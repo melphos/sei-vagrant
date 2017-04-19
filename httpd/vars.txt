@@ -1,6 +1,11 @@
 SEI_HOST_URL=${:-"https://sei-homolog.anac.gov.br"}
+
 SIP_ORGAO_SISTEMA=${:-"ANAC"}
+
 SEI_HTTPS=${:-"true"}
+
+SipWsdl
+SIP_WSDL=${:-"http://sei-homolog.anac.gov.br"}
 
 SIP_BANCO_SERVIDOR=${:-"sqlserver"}
 SIP_BANCO_PORTA=${:-"1433"}

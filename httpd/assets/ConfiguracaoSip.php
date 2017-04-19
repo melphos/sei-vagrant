@@ -14,30 +14,30 @@ class ConfiguracaoSip extends InfraConfiguracao  {
  	public function getArrConfiguracoes(){
  	  return array(
  	      'Sip' => array(
- 	          'URL' => 'https://sei-homolog.anac.gov.br/sip',
+ 	          'URL' => getenv('SEI_HOST_URL').'/sip',
  	          'Producao' => false),
  	       
  	      'PaginaSip' => array('NomeSistema' => 'SIP'),
 
  	      'SessaoSip' => array(
- 	          'SiglaOrgaoSistema' => 'ANAC',
+ 	          'SiglaOrgaoSistema' => getenv('SIP_ORGAO_SISTEMA'),
  	          'SiglaSistema' => 'SIP',
- 	          'PaginaLogin' => 'https://sei-homolog.anac.gov.br/sip/login.php',
- 	          'SipWsdl' => 'http://sei-homolog.anac.gov.br/sip/controlador_ws.php?servico=wsdl',
+ 	          'PaginaLogin' => getenv('SEI_HOST_URL').'/sip/login.php',
+ 	          'SipWsdl' => getenv('SIP_WSDL').'sip/controlador_ws.php?servico=wsdl',
  	          'https' => true),
  	       
 
               'BancoSip'  => array(
-                  'Servidor' => 'sdbdf1006',
-                  'Porta' => '1433',
-                  'Banco' => 'SIP_3_0',
-                  'Usuario' => 'usr_sei_3.0_app',
-                  'Senha' => 'sei@3.0',
-                  'Tipo' => 'SqlServer'), //MySql, SqlServer ou Oracle
+                  'Servidor' => getenv('SIP_BANCO_SERVIDOR'),
+                  'Porta' => getenv('SIP_BANCO_PORTA'),
+                  'Banco' => getenv('SIP_BANCO'),
+                  'Usuario' => getenv('SIP_BANCO_USUARIO'),
+                  'Senha' => getenv('SIP_BANCO_SENHA'),
+                  'Tipo' => getenv('SIP_BANCO_TIPO')), //MySql, SqlServer ou Oracle
 
 
-				'CacheSip' => array('Servidor' => 'memcached',
-						                'Porta' => '11211'),
+				'CacheSip' => array('Servidor' => getenv('CACHE_SERVIDOR'),
+						                'Porta' => getenv('CACHE_SERVIDOR_PORTA'),
 
  	      'HostWebService' => array(
  	          'Replicacao' => array('*'), //endereço ou IP da máquina que implementa o serviço de replicação de usuários
