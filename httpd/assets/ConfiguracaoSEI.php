@@ -15,7 +15,7 @@ class ConfiguracaoSEI extends InfraConfiguracao  {
  	  return array(
 
  	      'SEI' => array(
- 	          'URL' => 'http://localhost/sei',
+ 	          'URL' => 'https://sei-homolog.anac.gov.br/sei',
  	          'Producao' => false,
  	          'RepositorioArquivos' => '/var/sei/arquivos'),
 
@@ -25,35 +25,20 @@ class ConfiguracaoSEI extends InfraConfiguracao  {
  	          'LogoMenu' => ''),
  	       
  	      'SessaoSEI' => array(
- 	          'SiglaOrgaoSistema' => 'ABC',
+ 	          'SiglaOrgaoSistema' => 'ANAC',
  	          'SiglaSistema' => 'SEI',
- 	          'PaginaLogin' => getenv('SEI_HOST_URL').'/sip/login.php',
- 	          'SipWsdl' => 'http://localhost/sip/controlador_ws.php?servico=wsdl',
- 	          'https' => false),
+ 	          'PaginaLogin' => 'https://sei-homolog.anac.gov.br/sip/login.php',
+ 	          'SipWsdl' => 'http://sei-homolog.anac.gov.br/sip/controlador_ws.php?servico=wsdl',
+ 	          'https' => true),
  	       
+
  	      'BancoSEI'  => array(
- 	          'Servidor' => 'mysql',
- 	          'Porta' => '3306',
- 	          'Banco' => 'sei',
- 	          'Usuario' => 'sei_user',
- 	          'Senha' => 'sei_user',
- 	          'Tipo' => 'MySql'), //MySql, SqlServer ou Oracle
-
-// 	      'BancoSEI'  => array(
-// 	          'Servidor' => 'oracle',
-// 	          'Porta' => '1521',
-// 	          'Banco' => 'sei',
-// 	          'Usuario' => 'sei',
-// 	          'Senha' => 'sei_user',
-// 	          'Tipo' => 'Oracle'), //MySql, SqlServer ou Oracle
-
-// 	      'BancoSEI'  => array(
-// 	          'Servidor' => 'sqlserver',
-// 	          'Porta' => '1433',
-// 	          'Banco' => 'sei',
-// 	          'Usuario' => 'sei_user',
-// 	          'Senha' => 'sei_user',
-// 	          'Tipo' => 'SqlServer'), //MySql, SqlServer ou Oracle
+ 	          'Servidor' => 'sdbdf1006',
+ 	          'Porta' => '1433',
+ 	          'Banco' => 'SEI_3_0',
+ 	          'Usuario' => 'usr_sei_3.0_app',
+ 	          'Senha' => 'sei@3.0',
+ 	          'Tipo' => 'SqlServer'), //MySql, SqlServer ou Oracle
 
 				'CacheSEI' => array('Servidor' => 'memcached',
 					                	'Porta' => '11211'),
@@ -70,7 +55,7 @@ class ConfiguracaoSEI extends InfraConfiguracao  {
 
 				'HostWebService' => array(
 						'Edoc' => array('[Servidor .NET]'),
-						'Sip' => array('*'), //Referências (IP e nome na rede) de todas as máquinas que executam o SIP.
+						'Sip' => array('localhost','sei-homolog.anac.gov.br','127.0.0.1','10,161.50.129','10.161.50.*','10.42.*.*'), //Referências (IP e nome na rede) de todas as máquinas que executam o SIP.
 						'Publicacao' => array('*'), //Referências (IP e nome na rede) das máquinas de veículos de publicação externos cadastrados no SEI.
 						'Ouvidoria' => array('*'), //Referências (IP e nome na rede) da máquina que hospeda o formulário de Ouvidoria personalizado. Se utilizar o formulário padrão do SEI, então configurar com as máquinas dos nós de aplicação do SEI.
 				),
@@ -82,7 +67,7 @@ class ConfiguracaoSEI extends InfraConfiguracao  {
 						'Codificacao' => '8bit', //8bit, 7bit, binary, base64, quoted-printable
 						'MaxDestinatarios' => 999, //numero maximo de destinatarios por mensagem
 						'MaxTamAnexosMb' => 999, //tamanho maximo dos anexos em Mb por mensagem
-						'Seguranca' => '', //TLS, SSL ou vazio
+						'Seguranca' => 'TLS', //TLS, SSL ou vazio
 						'Autenticar' => false, //se true então informar Usuario e Senha
 						'Usuario' => '',
 						'Senha' => '',

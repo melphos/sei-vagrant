@@ -1,0 +1,15 @@
+SEI_HOST_URL=${:-"https://sei-homolog.anac.gov.br"}
+SIP_ORGAO_SISTEMA=${:-"ANAC"}
+SEI_HTTPS=${:-"true"}
+
+SIP_BANCO_SERVIDOR=${:-"sqlserver"}
+SIP_BANCO_PORTA=${:-"1433"}
+SIP_BANCO=${:-"SIP_3_0"}
+SIP_BANCO_USUARIO=${:-"usr_sei_3.0_app"}
+SIP_BANCO_SENHA=${:-"sei@3.0"}
+SIP_BANCO_TIPO=${:-"SqlServer"}
+SIP_AUTENTICACAO=${:=""}
+
+CACHE_SERVIDOR=${:-"memcached"}
+CACHE_SERVIDOR_PORTA=${:-"11211"}
+

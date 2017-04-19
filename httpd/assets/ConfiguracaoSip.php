@@ -14,41 +14,27 @@ class ConfiguracaoSip extends InfraConfiguracao  {
  	public function getArrConfiguracoes(){
  	  return array(
  	      'Sip' => array(
- 	          'URL' => 'http://localhost/sip',
+ 	          'URL' => 'https://sei-homolog.anac.gov.br/sip',
  	          'Producao' => false),
  	       
  	      'PaginaSip' => array('NomeSistema' => 'SIP'),
 
  	      'SessaoSip' => array(
- 	          'SiglaOrgaoSistema' => 'ABC',
+ 	          'SiglaOrgaoSistema' => 'ANAC',
  	          'SiglaSistema' => 'SIP',
- 	          'PaginaLogin' => getenv('SEI_HOST_URL').'/sip/login.php',
- 	          'SipWsdl' => 'http://localhost/sip/controlador_ws.php?servico=wsdl',
- 	          'https' => false),
+ 	          'PaginaLogin' => 'https://sei-homolog.anac.gov.br/sip/login.php',
+ 	          'SipWsdl' => 'http://sei-homolog.anac.gov.br/sip/controlador_ws.php?servico=wsdl',
+ 	          'https' => true),
  	       
- 	      'BancoSip'  => array(
- 	          'Servidor' => 'mysql',
- 	          'Porta' => '3306',
- 	          'Banco' => 'sip',
- 	          'Usuario' => 'sip_user',
- 	          'Senha' => 'sip_user',
- 	          'Tipo' => 'MySql'), //MySql, SqlServer ou Oracle
 
-// 	      'BancoSip'  => array(
-// 	          'Servidor' => 'oracle',
-// 	          'Porta' => '1521',
-// 	          'Banco' => 'sip',
-// 	          'Usuario' => 'sip',
-// 	          'Senha' => 'sip_user',
-// 	          'Tipo' => 'Oracle'), //MySql, SqlServer ou Oracle
+              'BancoSip'  => array(
+                  'Servidor' => 'sdbdf1006',
+                  'Porta' => '1433',
+                  'Banco' => 'SIP_3_0',
+                  'Usuario' => 'usr_sei_3.0_app',
+                  'Senha' => 'sei@3.0',
+                  'Tipo' => 'SqlServer'), //MySql, SqlServer ou Oracle
 
-// 	      'BancoSip'  => array(
-// 	          'Servidor' => 'sqlserver',
-// 	          'Porta' => '1433',
-// 	          'Banco' => 'sip',
-// 	          'Usuario' => 'sip_user',
-// 	          'Senha' => 'sip_user',
-// 	          'Tipo' => 'SqlServer'), //MySql, SqlServer ou Oracle
 
 				'CacheSip' => array('Servidor' => 'memcached',
 						                'Porta' => '11211'),
@@ -56,7 +42,7 @@ class ConfiguracaoSip extends InfraConfiguracao  {
  	      'HostWebService' => array(
  	          'Replicacao' => array('*'), //endereço ou IP da máquina que implementa o serviço de replicação de usuários
  	          'Pesquisa' => array('*'), //endereços/IPs das máquinas do SEI
- 	          'Autenticacao' => array('*')), //endereços/IPs das máquinas do SEI
+ 	          'Autenticacao' => array('89afbfda3ccb','10.42.170.21','localhost','sei-homolog.anac.gov.br','127.0.0.1','10,161.50.129','10.42.0.1','*.anac.gov.br')), //endereços/IPs das máquinas do SEI
 
 				'InfraMail' => array(
 						'Tipo' => '2', //1 = sendmail (neste caso não é necessário configurar os atributos abaixo), 2 = SMTP
@@ -65,7 +51,7 @@ class ConfiguracaoSip extends InfraConfiguracao  {
 						'Codificacao' => '8bit', //8bit, 7bit, binary, base64, quoted-printable
 						'MaxDestinatarios' => 999, //numero maximo de destinatarios por mensagem
 						'MaxTamAnexosMb' => 999, //tamanho maximo dos anexos em Mb por mensagem
-						'Seguranca' => '', //TLS, SSL ou vazio
+						'Seguranca' => 'TLS', //TLS, SSL ou vazio
 						'Autenticar' => false, //se true então informar Usuario e Senha
 						'Usuario' => '',
 						'Senha' => '',
